@@ -7,6 +7,9 @@ Algo:
         - If it exists, a pair that sums up to the given number has been found
     - Insert the current index of the array into the hash table after your perform the step above
     
+Runtime Complexity: the execution count
+* Time Complexity: Big O is O(n) - if n is a length of the array, n(linar)
+* Space Complexity: O(m) - where m is the number of the unique weights in array
 """
 
 # Find 2 items:
