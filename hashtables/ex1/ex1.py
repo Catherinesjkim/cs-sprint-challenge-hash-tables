@@ -5,7 +5,7 @@ Algo:
     - Calculate the complement by subtracting the current list element from the given number (limit)
     - Look up the complement in the hash table
         - If it exists, a pair that sums up to the given number has been found
-    - Insert the current index of the array into the hash table after your perform the step above
+    - Insert the current index of the array into the hash table after you perform the step above
     
 Runtime Complexity: the execution count
 * Time Complexity: Big O is O(n) - if n is a length of the array, n(linar)
@@ -27,7 +27,7 @@ def get_indices_of_item_weights(weights: list, length: int, limit: int) -> list:
     # If not, hash the weight while using:
     # weight = hash key
     # array index = hash value
-    # Even if the same weight is found more than once, it doesn't matter because at the tiem of the lookup, we only need one tiem with that weight
+    # Even if the same weight is found more than once, it doesn't matter because at the tiem of the lookup, we only need one item with that weight
     for i in range(length):
         weight = weights[i]
         if weight in hashTable:
@@ -38,15 +38,4 @@ def get_indices_of_item_weights(weights: list, length: int, limit: int) -> list:
     # if such a pair doesn't exist, return an empty array
     return None
 
-# Driver code
-# weights = [4, 6, 10, 15, 16] # num_arr
-# length = 5 # length of the array
-# limit = 21 # pair_sum 
 
-# Calling function
-# get_indices_of_item_weights(weights, length, limit)
-
-"""
-input: weights = [ 4, 6, 10, 15, 16 ], length = 5, limit = 21
-output: [ 3, 1 ]  # since these are the indices of weights 15 and 6 whose sum equals 21
-"""
