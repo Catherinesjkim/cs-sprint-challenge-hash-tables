@@ -1,7 +1,49 @@
-def get_indices_of_item_weights(weights, length, limit):
-    """
-    YOUR CODE HERE
-    """
-    # Your code here
+"""
+Algo:
+1. Initialize an empty hash table
+2. For each index in the array:
+    - Calculate the complement by subtracting the current list element from the given number (limit)
+    - Look up the complement in the hash table
+        - If it exists, a pair that sums up to the given number has been found
+    - Insert the current index of the array into the hash table after your perform the step above
+    
+"""
 
+# Find 2 items:
+# Sum of 2 weights(num_arr) == limit(pair_sum)
+def get_indices_of_item_weights(weights: list, length: int, limit: int) -> list:
+    length = len(weights)
+    # Initialize an empty hash table with python dictionary
+    hashTable = dict()
+    
+    if length <= 1:
+        return None
+    
+    # Traverse arr only once. For each weight in arr, compute its complement limit - weight and check wether that complement is hashed so far
+    # If found the complement in the map, return a pair that consists of weight's and limit - weight's indices
+    # If not, hash the weight while using:
+    # weight = hash key
+    # array index = hash value
+    # Even if the same weight is found more than once, it doesn't matter because at the tiem of the lookup, we only need one tiem with that weight
+    for i in range(length):
+        weight = weights[i]
+        if weight in hashTable:
+            value = hashTable[weight]
+            return [i, value]
+        diff = limit - weight
+        hashTable[diff] = i
+    # if such a pair doesn't exist, return an empty array
     return None
+
+# Driver code
+# weights = [4, 6, 10, 15, 16] # num_arr
+# length = 5 # length of the array
+# limit = 21 # pair_sum 
+
+# Calling function
+# get_indices_of_item_weights(weights, length, limit)
+
+"""
+input: weights = [ 4, 6, 10, 15, 16 ], length = 5, limit = 21
+output: [ 3, 1 ]  # since these are the indices of weights 15 and 6 whose sum equals 21
+"""
