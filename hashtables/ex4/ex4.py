@@ -12,7 +12,7 @@ Example input:
 
 Input can be in any order.
 
-Example return value:
+Example output/return value:
 
 ```python
 [ 1, 3, 4 ]
@@ -27,26 +27,25 @@ Solve this problem with a hash table.
 
 Limits:
 * The input list can contain approximately 5,000,000 elements.
+
 """
-# Traverse the given array, increase the count at absolute value of hash table
-# If count becomes 2, store its absolute value in another vector
-# And finally sort the vector
-# If the size of the vector is 0, print "0"
-# else for each term in vector, print first its negative value and the positive value
+
 def has_negatives(numbers):
+    # Traverse the given array, increase the count at absolute value of hash table
     storage, result = set(), []
     
     # for each element of array
     for n in numbers:
-        # Try to find the negative value of numbers[i] from i + 1 to numbers
+        # find the negative value of numbers[n] 
         diff = 0 - n
-        # If absolute values are equal to positive numbers,
+        # if absolute values are equal to positive numbers
         if diff in storage:
-            # Print the positive number with negative value in the array
+            # store its absolute value in another vector
             result.append(abs(diff))
+        # else for each term in vector, print first its negative value and the positive value
         else:
+            # add the positive number with negative value in the array
             storage.add(n)
-            
     return result
 
 # Driver code
